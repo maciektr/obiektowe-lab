@@ -4,13 +4,17 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class Vector2dTest {
+    private final Vector2d vector_1_1 = new Vector2d(1,1);
     private final Vector2d vector_1_2 = new Vector2d(1,2);
+    private final Vector2d vector_2_1 = new Vector2d(2,1);
     private final Vector2d vector_0_0 = new Vector2d(0,0);
-
+    private final Vector2d vector_0_2 = new Vector2d(0,2);
+    private final Vector2d vector_1_0 = new Vector2d(1,0);
+    private final Vector2d vector_2_2 = new Vector2d(2,2);
 
     @Test
     public void testEquals(){
-        Assert.assertEquals(vector_1_2,new Vector2d(0,2).add(new Vector2d(1,0)));
+        Assert.assertEquals(vector_1_2,vector_0_2.add(vector_1_0));
         Assert.assertNotEquals(vector_1_2, new Vector2d(-1,-2));
     }
 
@@ -36,35 +40,35 @@ public class Vector2dTest {
 
     @Test
     public void testUpperRight(){
-        Assert.assertEquals(new Vector2d(2,2),vector_1_2.upperRight(new Vector2d(2,1)));
-        Assert.assertNotEquals(new Vector2d(1,1),vector_1_2.upperRight(new Vector2d(2,1)));
+        Assert.assertEquals(vector_2_2,vector_1_2.upperRight(vector_2_1));
+        Assert.assertNotEquals(vector_1_1,vector_1_2.upperRight(vector_2_1));
     }
 
     @Test
     public void testLowerLeft(){
-        Assert.assertNotEquals(new Vector2d(2,2),vector_1_2.lowerLeft(new Vector2d(2,1)));
-        Assert.assertEquals(new Vector2d(1,1),vector_1_2.lowerLeft(new Vector2d(2,1)));
+        Assert.assertNotEquals(vector_2_2,vector_1_2.lowerLeft(vector_2_1));
+        Assert.assertEquals(vector_1_1,vector_1_2.lowerLeft(vector_2_1));
     }
 
     @Test
     public void testAdd(){
-        Assert.assertNotEquals(new Vector2d(2,2),vector_1_2.add(new Vector2d(2,1)));
-        Assert.assertEquals(new Vector2d(1,1),new Vector2d(-1,2).add(new Vector2d(2,-1)));
+        Assert.assertNotEquals(vector_2_2,vector_1_2.add(vector_2_1));
+        Assert.assertEquals(vector_1_1,new Vector2d(-1,2).add(new Vector2d(2,-1)));
         Assert.assertEquals(vector_0_0,vector_0_0.add(vector_0_0));
     }
 
     @Test
     public void testSubtract(){
-        Assert.assertEquals(new Vector2d(-1,1),vector_1_2.substract(new Vector2d(2,1)));
-        Assert.assertNotEquals(new Vector2d(1,1),new Vector2d(-1,2).substract(new Vector2d(2,-1)));
+        Assert.assertEquals(new Vector2d(-1,1),vector_1_2.substract(vector_2_1));
+        Assert.assertNotEquals(vector_1_1,new Vector2d(-1,2).substract(new Vector2d(2,-1)));
         Assert.assertEquals(vector_0_0,vector_0_0.substract(vector_0_0));
     }
 
     @Test
     public void testOpposite(){
-        Assert.assertEquals(new Vector2d(-1,-1), new Vector2d(1,1).opposite());
+        Assert.assertEquals(new Vector2d(-1,-1), vector_1_1.opposite());
         Assert.assertEquals(vector_0_0, vector_0_0.opposite());
-        Assert.assertNotEquals(new Vector2d(1,1), new Vector2d(1,1).opposite());
+        Assert.assertNotEquals(vector_1_1, vector_1_1.opposite());
     }
 }
 
