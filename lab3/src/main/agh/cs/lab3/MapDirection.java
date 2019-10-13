@@ -45,16 +45,16 @@ public enum MapDirection {
         }
     }
 
-    public Vector2d toUnitVector(){
+    public Position toUnitVector(){
         switch(this){
             case EAST:
-                return new Vector2d(1,0);
+                return new Position(1,0);
             case WEST:
-                return new Vector2d(-1,0);
+                return new Position(-1,0);
             case NORTH:
-                return new Vector2d(0,1);
+                return new Position(0,1);
             default:
-                return new Vector2d(0,-1);
+                return new Position(0,-1);
         }
 
     }
