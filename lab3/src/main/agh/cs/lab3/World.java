@@ -10,12 +10,19 @@ public class World {
 //        MapDirection a = MapDirection.NORTH;
 //        System.out.println(a.toUnitVector());
 
-        Car samochod = new Car();
-        System.out.println(samochod);
-        samochod.move(MoveDirection.RIGHT);
-        samochod.move(MoveDirection.FORWARD);
-        samochod.move(MoveDirection.FORWARD);
-        samochod.move(MoveDirection.FORWARD);
-        System.out.println(samochod);
+        Animal zwierze = new Animal();
+        System.out.println(zwierze);
+//        zwierze.move(MoveDirection.RIGHT);
+//        zwierze.move(MoveDirection.FORWARD);
+//        zwierze.move(MoveDirection.FORWARD);
+//        zwierze.move(MoveDirection.FORWARD);
+//        zwierze.move(MoveDirection.BACKWARD);
+        OptionsParser parser = new OptionsParser();
+        String[] orders = {"r","forward","forward","forward","backward"};
+        MoveDirection[] parsedMoves = parser.parse(orders);
+        for(MoveDirection move : parsedMoves){
+            zwierze.move(move);
+        }
+        System.out.println(zwierze);
     }
 }

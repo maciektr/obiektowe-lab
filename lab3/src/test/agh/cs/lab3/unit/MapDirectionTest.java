@@ -1,5 +1,6 @@
-package agh.cs.lab3;
+package agh.cs.lab3.unit;
 
+import agh.cs.lab3.MapDirection;
 import org.junit.Assert;
 import org.junit.Test;
 
