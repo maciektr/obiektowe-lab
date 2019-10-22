@@ -3,15 +3,31 @@ package agh.cs.lab4;
 public class Animal {
     private MapDirection direction = MapDirection.NORTH;
     private Vector2d position = new Vector2d(2,2);
+    private IWorldMap map;
 
-    public String toString(){
-        return "Pozycja: "+ position +" Kierunek: "+direction;
+    Animal(IWorldMap map){
+        this.map = map;
     }
 
-    private static final Vector2d mapLowerLeft = new Vector2d(0,0);
-    private static final Vector2d mapUpperRight = new Vector2d(4,4);
-    private boolean isOnMap(Vector2d x){
-        return x.follows(mapLowerLeft) && x.precedes(mapUpperRight);
+    Animal(IWorldMap map, Vector2d initialPosition){
+        this.map = map;
+        this.position = initialPosition;
+    }
+
+    public Vector2d getPosition(){
+        return position;
+    }
+
+    public String toString(){
+        switch(direction){
+            case NORTH:
+                return "N";
+            case SOUTH:
+                return "S";
+            case WEST:
+                return "W";
+        }
+        return "E";
     }
 
     public void move(MoveDirection moveDirection){
@@ -28,11 +44,20 @@ public class Animal {
                 if(moveDirection==MoveDirection.BACKWARD)
                     thisMoveDirection = thisMoveDirection.previous().previous();
                 Vector2d afterMove = this.position.add(thisMoveDirection.toUnitVector());
-                if(isOnMap(afterMove))
+                if(this.map.canMoveTo(afterMove))
                     this.position = afterMove;
                 break;
             default:
                 break;
         }
     }
+
+    /*public boolean equals(Object other){
+        if (this == other)
+            return true;
+        if (!(other instanceof Animal))
+            return false;
+        Animal that = (Animal) other;
+        return this.direction == that.direction && this.position.equals(that.position);
+    }*/
 }
