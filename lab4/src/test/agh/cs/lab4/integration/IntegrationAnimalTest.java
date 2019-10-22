@@ -1,8 +1,8 @@
-package agh.cs.lab3.integration;
+package agh.cs.lab4.integration;
 
-import agh.cs.lab3.Animal;
-import agh.cs.lab3.MoveDirection;
-import agh.cs.lab3.OptionsParser;
+import agh.cs.lab4.Animal;
+import agh.cs.lab4.MoveDirection;
+import agh.cs.lab4.OptionsParser;
 import org.junit.Assert;
 import org.junit.Test;
 //funkcję uruchamiającą test
