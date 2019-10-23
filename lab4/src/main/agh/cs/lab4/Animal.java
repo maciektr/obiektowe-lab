@@ -5,11 +5,11 @@ public class Animal {
     private Vector2d position = new Vector2d(2,2);
     private IWorldMap map;
 
-    Animal(IWorldMap map){
+    public Animal(IWorldMap map){
         this.map = map;
     }
 
-    Animal(IWorldMap map, Vector2d initialPosition){
+    public Animal(IWorldMap map, Vector2d initialPosition){
         this.map = map;
         this.position = initialPosition;
     }
@@ -40,14 +40,12 @@ public class Animal {
                 break;
             case FORWARD:
             case BACKWARD:
-                MapDirection thisMoveDirection = this.direction;
-                if(moveDirection==MoveDirection.BACKWARD)
-                    thisMoveDirection = thisMoveDirection.previous().previous();
-                Vector2d afterMove = this.position.add(thisMoveDirection.toUnitVector());
+                Vector2d thisMove = this.direction.toUnitVector();
+                if(moveDirection == MoveDirection.BACKWARD)
+                    thisMove = thisMove.opposite();
+                Vector2d afterMove = this.position.add(thisMove);
                 if(this.map.canMoveTo(afterMove))
                     this.position = afterMove;
-                break;
-            default:
                 break;
         }
     }

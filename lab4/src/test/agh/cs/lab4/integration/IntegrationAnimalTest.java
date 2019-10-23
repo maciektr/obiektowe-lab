@@ -1,52 +1,64 @@
 package agh.cs.lab4.integration;
 
-import agh.cs.lab4.Animal;
-import agh.cs.lab4.MoveDirection;
-import agh.cs.lab4.OptionsParser;
+import agh.cs.lab4.*;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-//funkcję uruchamiającą test
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class IntegrationAnimalTest {
-    /*@Test
-    public void testOrientation(){
-        Animal zwierze = new Animal();
-        OptionsParser parser = new OptionsParser();
-        String[] orders = {"r","l","right","left","right","right"};
-        MoveDirection[] parsedMoves = parser.parse(orders);
-        for(MoveDirection move : parsedMoves){
-           zwierze.move(move);
-        }
-        Assert.assertEquals(zwierze.toString(),"Pozycja: (2,2) Kierunek: Południe");
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final PrintStream originalErr = System.err;
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
     }
+
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
+
     @Test
     public void testPosition(){
-        Animal zwierze = new Animal();
-        OptionsParser parser = new OptionsParser();
-        String[] orders = {"r","l","f","right","left","right","right","b","l","f"};
-        MoveDirection[] parsedMoves = parser.parse(orders);
-        for(MoveDirection move : parsedMoves){
-            zwierze.move(move);
-        }
-        Assert.assertEquals(zwierze.toString(),"Pozycja: (3,4) Kierunek: Wschód");
+        RectangularMap map = new RectangularMap(10,5);
+        Animal zwierze = new Animal(map);
+        map.place(zwierze);
+
+        String[] orders = {"r","l","right","left","right","right"};
+        MoveDirection[] parsedMoves = new OptionsParser().parse(orders);
+        map.run(parsedMoves);
+
+        Assert.assertEquals(zwierze.getPosition(), new Vector2d(2,2));
     }
+
     @Test
     public void testStayOnMap(){
-        Animal zwierze = new Animal();
-        OptionsParser parser = new OptionsParser();
-        String[] orders = {"f","f","f","f","f","f"};
-        MoveDirection[] parsedMoves = parser.parse(orders);
-        for(MoveDirection move : parsedMoves){
-            zwierze.move(move);
-        }
-        Assert.assertNotEquals(zwierze.toString(),"Pozycja: (2,8) Kierunek: Północ");
+        RectangularMap map = new RectangularMap(3,3);
+        Animal zwierze = new Animal(map);
+        map.place(zwierze);
+
+        String[] orders = {"f","f","f","f","f", "r", "f","f","f","f","f"};
+        MoveDirection[] parsedMoves = new OptionsParser().parse(orders);
+        map.run(parsedMoves);
+
+        Assert.assertEquals(zwierze.getPosition(), new Vector2d(3,3));
     }
+
     @Test
     public void testParser(){
-        Animal zwierze = new Animal();
         OptionsParser parser = new OptionsParser();
         String[] orders = {"f","right","f","backward","l","left"};
         MoveDirection[] parsedMoves = parser.parse(orders);
         MoveDirection[] manualParsing = {MoveDirection.FORWARD,MoveDirection.RIGHT,MoveDirection.FORWARD,MoveDirection.BACKWARD,MoveDirection.LEFT,MoveDirection.LEFT};
-        Assert.assertEquals(parsedMoves,manualParsing);
-    }*/
+        Assert.assertArrayEquals(parsedMoves,manualParsing);
+    }
 }
