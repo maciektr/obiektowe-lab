@@ -1,6 +1,6 @@
 package agh.cs.lab4;
 
-public class Animal {
+public class Animal implements IMapElement {
     private MapDirection direction = MapDirection.NORTH;
     private Vector2d position = new Vector2d(2,2);
     private IWorldMap map;
@@ -49,13 +49,4 @@ public class Animal {
                 break;
         }
     }
-
-    /*public boolean equals(Object other){
-        if (this == other)
-            return true;
-        if (!(other instanceof Animal))
-            return false;
-        Animal that = (Animal) other;
-        return this.direction == that.direction && this.position.equals(that.position);
-    }*/
 }

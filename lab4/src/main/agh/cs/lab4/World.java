@@ -1,5 +1,8 @@
 package agh.cs.lab4;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class World {
     public static void main(String []args){
         /*Position position1 = new Position(1,2);
@@ -21,10 +24,17 @@ public class World {
         System.out.println(zwierze);*/
 
         MoveDirection[] directions = new OptionsParser().parse(args);
-        IWorldMap map = new RectangularMap(10, 5);
-        map.place(new Animal(map));
-        map.place(new Animal(map,new Vector2d(3,4)));
-        map.run(directions);
+//        IWorldMap map = new RectangularMap(10, 5);
+        List<Rock> rocks = new ArrayList<Rock>();
+        rocks.add(new Rock(new Vector2d(-1,1)));
+        rocks.add(new Rock(new Vector2d(1, -1)));
+//        rocks.add(new Rock(new Vector2d(3,6)));
+//        rocks.add(new Rock(new Vector2d(2,0)));
+        IWorldMap map = new UnboundedMap(rocks);
+        System.out.println(map.toString());
+//        map.place(new Animal(map));
+//        map.place(new Animal(map,new Vector2d(3,4)));
+//        map.run(directions);
 
 
     }
