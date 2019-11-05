@@ -19,11 +19,12 @@ public class OptionsParser {
                 case "right":
                     next = MoveDirection.RIGHT;
                     break;
-                default:
                 case "l":
                 case "left":
                     next = MoveDirection.LEFT;
                     break;
+                default:
+                    throw new IllegalArgumentException(order + " is not legal move specification");
             }
             result.add(next);
         }

@@ -22,19 +22,23 @@ public class World {
             zwierze.move(move);
         }
         System.out.println(zwierze);*/
-
-        MoveDirection[] directions = new OptionsParser().parse(args);
+        try {
+            MoveDirection[] directions = new OptionsParser().parse(args);
 //        IWorldMap map = new RectangularMap(10, 5);
-        List<Rock> rocks = new ArrayList<Rock>();
-        rocks.add(new Rock(new Vector2d(-1,1)));
-        rocks.add(new Rock(new Vector2d(1, -1)));
-//        rocks.add(new Rock(new Vector2d(3,6)));
+            List<Rock> rocks = new ArrayList<Rock>();
+            rocks.add(new Rock(new Vector2d(-1, 1)));
+            rocks.add(new Rock(new Vector2d(1, -1)));
 //        rocks.add(new Rock(new Vector2d(2,0)));
-        IWorldMap map = new UnboundedMap(rocks);
-        System.out.println(map.toString());
-//        map.place(new Animal(map));
+            IWorldMap map = new UnboundedMap(rocks);
+            System.out.println(map.toString());
+            map.place(new Animal(map));
+            map.place(new Animal(map,new Vector2d(3,4)));
 //        map.place(new Animal(map,new Vector2d(3,4)));
+
 //        map.run(directions);
+        } catch(IllegalArgumentException ex) {
+            System.out.println(ex.toString());
+        }
 
 
     }

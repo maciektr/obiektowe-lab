@@ -49,4 +49,5 @@ public class Animal implements IMapElement {
                 break;
         }
     }
+
 }
