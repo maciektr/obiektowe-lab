@@ -34,12 +34,9 @@ public class World {
             map.place(new Animal(map));
             map.place(new Animal(map,new Vector2d(3,4)));
 //        map.place(new Animal(map,new Vector2d(3,4)));
-
 //        map.run(directions);
         } catch(IllegalArgumentException ex) {
             System.out.println(ex.toString());
         }
-
-
     }
 }
