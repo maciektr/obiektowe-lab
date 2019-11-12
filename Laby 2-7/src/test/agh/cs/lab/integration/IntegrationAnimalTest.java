@@ -61,4 +61,6 @@ public class IntegrationAnimalTest {
         MoveDirection[] manualParsing = {MoveDirection.FORWARD,MoveDirection.RIGHT,MoveDirection.FORWARD,MoveDirection.BACKWARD,MoveDirection.LEFT,MoveDirection.LEFT};
         Assert.assertArrayEquals(parsedMoves,manualParsing);
     }
+
+
 }

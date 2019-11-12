@@ -2,7 +2,7 @@ package agh.cs.lab;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Vector2d {
+public class Vector2d{
     public final int x;
     public final int y;
 

@@ -1,9 +1,6 @@
 package agh.cs.lab.unit;
 
-import agh.cs.lab.Animal;
-import agh.cs.lab.UnboundedMap;
-import agh.cs.lab.Rock;
-import agh.cs.lab.Vector2d;
+import agh.cs.lab.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
