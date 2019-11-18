@@ -20,13 +20,13 @@ public class UnboundedMapTest {
     }
     @Test
     public void testToString(){
-        Assert.assertEquals(" y\\x  0 1\r\n" +
+        Assert.assertEquals((" y\\x  0 1\r\n" +
                         "  2: -----\r\n" +
                         "  1: | | |\r\n" +
                         "  0: | | |\r\n" +
-                        " -1: -----\r\n",
+                        " -1: -----\r\n").replaceAll("\r",""),
                 new UnboundedMap(new ArrayList<Rock>()).toString() );
-        Assert.assertEquals(" y\\x -4-3-2-1 0 1 2 3 4 5 6 7\r\n" +
+        Assert.assertEquals((" y\\x -4-3-2-1 0 1 2 3 4 5 6 7\r\n" +
                         "  8: -------------------------\r\n" +
                         "  7: | | | | | | | | | | | |R|\r\n" +
                         "  6: | | | | | | | |R| | | | |\r\n" +
@@ -40,17 +40,17 @@ public class UnboundedMapTest {
                         " -2: | | | | | | | | | | | | |\r\n" +
                         " -3: | | | | | | | | | | | | |\r\n" +
                         " -4: |R| | | | | | | | | | | |\r\n" +
-                        " -5: -------------------------\r\n",
+                        " -5: -------------------------\r\n").replaceAll("\r",""),
                 new UnboundedMap(rocks).toString() );
         List<Rock> r = new ArrayList<Rock>();
         r.add(new Rock(new Vector2d(-1,1)));
         r.add(new Rock(new Vector2d(1,-1)));
-        Assert.assertEquals(" y\\x -1 0 1\r\n" +
+        Assert.assertEquals((" y\\x -1 0 1\r\n" +
                 "  2: -------\r\n" +
                 "  1: |R| | |\r\n" +
                 "  0: | | | |\r\n" +
                 " -1: | | |R|\r\n" +
-                " -2: -------\r\n",
+                " -2: -------\r\n").replaceAll("\r",""),
                 new UnboundedMap(r).toString());
     }
 

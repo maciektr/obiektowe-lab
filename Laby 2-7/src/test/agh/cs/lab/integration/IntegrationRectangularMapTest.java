@@ -35,7 +35,7 @@ public class IntegrationRectangularMapTest {
         map.place(new Animal(map));
         map.place(new Animal(map,new Vector2d(3,4)));
         map.run(directions);
-        Assert.assertEquals(" y\\x  0 1 2 3 4 5 6 7 8 910\r\n" +
+        Assert.assertEquals((" y\\x  0 1 2 3 4 5 6 7 8 910\r\n" +
                 "  6: -----------------------\r\n" +
                 "  5: | | | | | | | | | | | |\r\n" +
                 "  4: | | | |N| | | | | | | |\r\n" +
@@ -193,6 +193,6 @@ public class IntegrationRectangularMapTest {
                 "  2: | | | | | | | | | | | |\r\n" +
                 "  1: | | | | | | | | | | | |\r\n" +
                 "  0: | | |S| | | | | | | | |\r\n" +
-                " -1: -----------------------\r\n"+"\r\n", outContent.toString());
+                " -1: -----------------------\r\n"+"\r\n").replaceAll("\r",""), outContent.toString());
     }
 }

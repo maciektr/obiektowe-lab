@@ -78,7 +78,7 @@ public class IntegrationUnboundedMapTest {
         map.place(new Animal(map,new Vector2d(3,4)));
         map.run(directions);
 
-        Assert.assertEquals(" y\\x -4-3-2-1 0 1 2 3 4 5 6 7\r\n" +
+        Assert.assertEquals((" y\\x -4-3-2-1 0 1 2 3 4 5 6 7\r\n" +
                 "  8: -------------------------\r\n" +
                 "  7: | | | | | | | | | | | |R|\r\n" +
                 "  6: | | | | | | | |R| | | | |\r\n" +
@@ -332,7 +332,7 @@ public class IntegrationUnboundedMapTest {
                 " -2: | | | | | | | | | | | | |\r\n" +
                 " -3: | | | | | | | | | | | | |\r\n" +
                 " -4: |R| | | | | | | | | | | |\r\n" +
-                " -5: -------------------------\r\n\r\n", outContent.toString());
+                " -5: -------------------------\r\n\r\n").replaceAll("\r",""), outContent.toString());
     }
 
     @Test
@@ -349,7 +349,7 @@ public class IntegrationUnboundedMapTest {
         a.move(MoveDirection.RIGHT);
         a.move(MoveDirection.FORWARD);
 
-        Assert.assertEquals(" y\\x -4-3-2-1 0 1 2 3 4 5 6 7\r\n" +
+        Assert.assertEquals((" y\\x -4-3-2-1 0 1 2 3 4 5 6 7\r\n" +
                         "  8: -------------------------\r\n" +
                         "  7: | | | | | | | | | | | |E|\r\n" +
                         "  6: | | | | | | | |R| | | | |\r\n" +
@@ -363,7 +363,7 @@ public class IntegrationUnboundedMapTest {
                         " -2: | | | | | | | | | | | | |\r\n" +
                         " -3: | | | | | | | | | | | | |\r\n" +
                         " -4: |R| | | | | | | | | | | |\r\n" +
-                        " -5: -------------------------\r\n",
+                        " -5: -------------------------\r\n").replaceAll("\r",""),
                 map.toString() );
         //Check if animal can step on rock
         r.add(new Rock(new Vector2d(7,7)));
@@ -373,7 +373,7 @@ public class IntegrationUnboundedMapTest {
         a.move(MoveDirection.FORWARD);
         a.move(MoveDirection.RIGHT);
         a.move(MoveDirection.FORWARD);
-        Assert.assertEquals(" y\\x -4-3-2-1 0 1 2 3 4 5 6 7\r\n" +
+        Assert.assertEquals((" y\\x -4-3-2-1 0 1 2 3 4 5 6 7\r\n" +
                         "  8: -------------------------\r\n" +
                         "  7: | | | | | | | | | | |E|R|\r\n" +
                         "  6: | | | | | | | |R| | | | |\r\n" +
@@ -387,7 +387,7 @@ public class IntegrationUnboundedMapTest {
                         " -2: | | | | | | | | | | | | |\r\n" +
                         " -3: | | | | | | | | | | | | |\r\n" +
                         " -4: |R| | | | | | | | | | | |\r\n" +
-                        " -5: -------------------------\r\n",
+                        " -5: -------------------------\r\n").replaceAll("\r",""),
                 map.toString() );
 
 
