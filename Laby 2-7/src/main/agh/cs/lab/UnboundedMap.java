@@ -8,7 +8,7 @@ public class UnboundedMap extends AbstractWorldMap implements IWorldMap{
 
     public UnboundedMap(List<Rock> rocks){
         for(Rock r : rocks){
-            boundary.place(r.getPosition());
+            boundary.place(r);
             super.objects.put(r.getPosition(), r);
         }
     }
@@ -19,8 +19,7 @@ public class UnboundedMap extends AbstractWorldMap implements IWorldMap{
     }
 
     public boolean place(Animal animal){
-        animal.addObserver(boundary);
-        boundary.place(animal.getPosition());
+        boundary.place(animal);
         return super.place(animal);
     }
 }

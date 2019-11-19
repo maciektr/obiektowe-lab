@@ -16,7 +16,10 @@ public class MapBoundary implements IPositionChangeObserver{
         yAxis.add(newPosition);
     }
 
-    public void place( Vector2d position){
+    public void place( IMapElement element){
+        if(element instanceof Animal)
+            ((Animal)element).addObserver(this);
+        Vector2d position = element.getPosition();
         xAxis.add(position);
         yAxis.add(position);
     }
